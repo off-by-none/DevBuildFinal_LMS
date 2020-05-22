@@ -4,14 +4,14 @@ GO
 USE LMS
 GO
 
-CREATE TABLE Users (
+CREATE TABLE UserTable (
 	userId int identity(1,1) primary key not null,
 	userTypeId int not null,
 	userName varchar(64)
 );
 GO
 
-INSERT INTO Users 
+INSERT INTO UserTable
 (userTypeId, userName)
 VALUES 
 (1, 'Master'), 
@@ -37,27 +37,27 @@ VALUES
 GO
 
 
-CREATE TABLE Courses (
+CREATE TABLE Course (
 	courseId int identity(1,1) primary key not null,
 	courseName varchar(128) not null,
-	assignedTeacherId int foreign key references Users(userId)
+	assignedTeacherId int foreign key references UserTable(userId)
 );
 GO
 
-INSERT INTO Courses 
+INSERT INTO Course 
 (courseName, assignedTeacherId)
 VALUES 
 ('DevBuild3.0', 2)
 GO
 
 
-CREATE TABLE StudentCourses (
-	courseId int foreign key references Courses(courseId),
-	studentId int foreign key references Users(userId)
+CREATE TABLE StudentCourse (
+	courseId int foreign key references Course(courseId),
+	studentId int foreign key references UserTable(userId)
 );
 GO
 
-INSERT INTO StudentCourses 
+INSERT INTO StudentCourse
 (courseId, studentId)
 VALUES 
 (1, 3),
