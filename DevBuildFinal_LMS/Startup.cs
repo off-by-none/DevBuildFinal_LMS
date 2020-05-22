@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using DevBuildFinal_LMS.Services;
 
 namespace DevBuildFinal_LMS
 {
@@ -26,7 +27,10 @@ namespace DevBuildFinal_LMS
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            services.AddTransient<ICourseDataService, CourseDataService>();
         }
+
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
