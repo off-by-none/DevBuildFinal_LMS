@@ -37,7 +37,21 @@ namespace DevBuildFinal_LMS.Services
 
             string command = "select * from course where courseId = @id";
 
-            Course result = conn.QueryFirstOrDefault<Course>(command);
+            Course result = conn.QueryFirstOrDefault<Course>(command, new { id = id });
+
+            conn.Close();
+
+            return result;
+        }
+
+        public int ChangeEnrollmentStatus(StudentCourse studentCourse) //maybe change this name to add student to class?
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "insert into studentcourse (courseId, studentId) ";
+            command += "values (@courseId, @studentId ";
+
+            int result = conn.Execute(command, new { courseId = studentCourse.courseId, studentId = studentCourse.studentId });
 
             conn.Close();
 
@@ -58,6 +72,44 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
+        public int AddTeacherToCourse(Course course)
+        {
+            SqlConnection conn = new SqlConnection(connString);
 
+            string command = "update course set assignedTeacherId = @assignedTeacherId where courseId = @courseId";
+
+            int result = conn.Execute(command, new { assignedTeacherId = course.assignedTeacherId, courseId = course.courseId });
+
+            conn.Close();
+
+            return result;
+        }
+
+        public int AddModule(Module module)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "insert into module (moduleName, courseId) ";
+            command += "values (@moduleName, @courseId)";
+
+            int result = conn.Execute(command, module);
+
+            conn.Close();
+
+            return result;
+        }
+
+        public IEnumerable<Module> ViewModulesById(int id)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "select * from module where id = id";
+
+            IEnumerable<Module> result = conn.Query<Module>(command);
+
+            conn.Close();
+
+            return result;
+        }
     }
 }
