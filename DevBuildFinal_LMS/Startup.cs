@@ -29,6 +29,7 @@ namespace DevBuildFinal_LMS
             });
 
             services.AddTransient<ICourseDataService, CourseDataService>();
+            services.AddTransient<IUserDataService, UserDataService>();
         }
 
 

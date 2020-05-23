@@ -11,4 +11,10 @@ namespace DevBuildFinal_LMS.Models
         public string courseName { get; set; }
         public int assignedTeacherId { get; set; }
     }
+
+    public class StudentCourse
+    {
+        public int courseId { get; set; }
+        public int studentId { get; set; }
+    }
 }

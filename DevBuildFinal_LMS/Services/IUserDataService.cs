@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using DevBuildFinal_LMS.Models;
+
+namespace DevBuildFinal_LMS.Services
+{
+    public interface IUserDataService
+    {
+        public IEnumerable<User> GetUsers();
+        public int AddUser(User user);
+        public int ChangeAdminStatus(User user);
+    }
+}

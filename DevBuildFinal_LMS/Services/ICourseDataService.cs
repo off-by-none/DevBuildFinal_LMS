@@ -10,7 +10,10 @@ namespace DevBuildFinal_LMS.Services
     {
         public IEnumerable<Course> GetCourses();
         public Course GetCourseById(int id);
-
-        public int AddCourse(Course course)
+        public int ChangeEnrollmentStatus(StudentCourse studentCourse);
+        public int AddCourse(Course course);
+        public int AddTeacherToCourse(Course course);
+        public int AddModule(Module module);
+        public IEnumerable<Module> ViewModulesById(int id);
     }
 }

@@ -63,3 +63,16 @@ VALUES
 (1, 3),
 (1, 4)
 GO
+
+CREATE TABLE Module (
+	moduleID int identity(1,1) primary key not null,
+	moduleName varchar(128) not null,
+	courseId int foreign key references Course(courseId)
+);
+GO
+
+INSERT INTO Module
+(moduleName, courseId)
+VALUES
+('Module 1', 1),
+('Module 2', 1)
