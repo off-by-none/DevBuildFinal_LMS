@@ -25,7 +25,14 @@ namespace DevBuildFinal_LMS.Controllers
         {
             return userData.GetUsers();
         }
-        
+
+        [HttpGet("names")]
+        public IEnumerable<string> GetUsersNames()
+        {
+            return userData.GetUsersNames();
+        }
+
+
         [HttpPost("add")]
         public object AddUser(User user)
         {

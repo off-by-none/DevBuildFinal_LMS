@@ -22,9 +22,22 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "select * from user";
+            string command = "SELECT * FROM LMS.dbo.UserTable";
 
             IEnumerable<User> result = conn.Query<User>(command);
+
+            conn.Close();
+
+            return result;
+        }
+
+        public IEnumerable<string> GetUsersNames()
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT userName FROM LMS.dbo.UserTable";
+
+            IEnumerable<string> result = conn.Query<string>(command);
 
             conn.Close();
 

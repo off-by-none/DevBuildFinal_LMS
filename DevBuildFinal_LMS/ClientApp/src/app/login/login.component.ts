@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../interfaces/User';
 import { Router } from '@angular/router';
+import { UserDataService } from '../user-data'
 
 @Component({
     selector: 'app-login',
@@ -10,22 +11,38 @@ import { Router } from '@angular/router';
 /** Login component*/
 export class LoginComponent {
 
-  userName: string;
+  users: string[];
+  newUserName: string;
+  is_invalidUser: boolean = false;
+
     /** Login ctor */
-  constructor(private router: Router) {}
+  constructor(private userData: UserDataService, private router: Router) {}
 
-  submitLogin() {
-    if (this.userName == '') {
-      return;
+  ngOnInit() {
+    this.getUsers();
+  }
+
+  getUsers = function () {
+    this.userData.getAllUsersNames().subscribe(
+      (data: string[]) => {
+        this.users = data;
+        console.log(this.users)
+      },
+      error => console.error(error)
+    );
+  }
+
+  submitLogin = function () {
+    console.log(this.newUserName)
+    if (this.users.includes(this.newUserName)) {
+      this.router.navigate(['home']);
     }
-
-    let userLogin: User = {
-      userTypeId: 3,
-      userName: this.userName
+    else {
+      this.is_invalidUser = true;
     }
-
-    //this.characterData.addPlayer(newPlayer).subscribe();
-    this.router.navigate(['home']);
   }
 
 }
+
+
+console.log(['joe', 'jane', 'mary'].includes('jane'));

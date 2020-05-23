@@ -1,5 +1,6 @@
 /* Bordered form */
 form {
+  max-width: 500px;
   border: 3px solid #f1f1f1;
 }
 
@@ -15,7 +16,7 @@ input[type=text], input[type=password] {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
+  background-color: #003399;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;
@@ -44,12 +45,13 @@ button:hover {
 
 /* Avatar image */
 img.avatar {
-  width: 40%;
+  width: 20%;
   border-radius: 50%;
 }
 
 /* Add padding to containers */
 .container {
+  width: 100%;
   padding: 16px;
 }
 
@@ -69,4 +71,9 @@ span.psw {
   .cancelbtn {
     width: 100%;
   }
+
+  .errorMsg {
+    color: red;
+  }
+
 }
