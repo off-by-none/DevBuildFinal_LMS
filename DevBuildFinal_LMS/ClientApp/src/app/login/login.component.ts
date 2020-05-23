@@ -13,6 +13,7 @@ export class LoginComponent {
 
   users: string[];
   newUserName: string;
+  newUserPassword: string;
   is_invalidUser: boolean = false;
 
     /** Login ctor */
@@ -40,6 +41,11 @@ export class LoginComponent {
     else {
       this.is_invalidUser = true;
     }
+  }
+
+  cancelLogin = function () {
+    this.newUserName = '';
+    this.newUserPassword = '';
   }
 
 }

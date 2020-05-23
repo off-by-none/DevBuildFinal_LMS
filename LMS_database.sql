@@ -17,7 +17,9 @@ GO
 INSERT INTO UserTable
 (userTypeId, userName)
 VALUES 
-(1, 'Master'), 
+(1, 'Admin'),
+(2, 'Teacher'),
+(3, 'Student'), 
 (2, 'Peter'),
 (3, 'Brandon'),
 (3, 'Soc'),
