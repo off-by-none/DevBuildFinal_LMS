@@ -27,11 +27,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\interfaces\course.ts" />
     <None Remove="ClientApp\src\app\interfaces\User.ts" />
     <None Remove="ClientApp\src\app\user-data.ts" />
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\interfaces\course.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\user-data.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\interfaces\User.ts" />
   </ItemGroup>
