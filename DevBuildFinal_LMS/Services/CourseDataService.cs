@@ -44,6 +44,22 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
+        public IEnumerable<Course> GetCoursesByUserId(int userId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT c.* ";
+            command += "FROM LMS.dbo.StudentCourse sc ";
+            command += "LEFT JOIN LMS.dbo.Course c ON c.courseId = sc.courseId ";
+            command += "WHERE studentId = @val ";
+
+            IEnumerable<Course> result = conn.Query<Course>(command, new{ val = userId });
+
+            conn.Close();
+
+            return result;
+        }
+
         public int ChangeEnrollmentStatus(StudentCourse studentCourse) //maybe change this name to add student to class?
         {
             SqlConnection conn = new SqlConnection(connString);

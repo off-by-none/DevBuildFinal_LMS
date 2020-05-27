@@ -44,6 +44,19 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
+        public User GetUserByName(string userName)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT * FROM LMS.dbo.UserTable WHERE userName = @val";
+
+            User result = conn.QueryFirst<User>(command, new { val = userName });
+
+            conn.Close();
+
+            return result;
+        }
+
         public int AddUser(User user)
         {
             SqlConnection conn = new SqlConnection(connString);

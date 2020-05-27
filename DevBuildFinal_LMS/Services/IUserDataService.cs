@@ -10,6 +10,7 @@ namespace DevBuildFinal_LMS.Services
     {
         public IEnumerable<User> GetUsers();
         public IEnumerable<string> GetUsersNames();
+        public User GetUserByName(string userName);
         public int AddUser(User user);
         public int ChangeAdminStatus(User user);
     }

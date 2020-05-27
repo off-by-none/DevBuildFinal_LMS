@@ -9,6 +9,7 @@ namespace DevBuildFinal_LMS.Services
     public interface ICourseDataService
     {
         public IEnumerable<Course> GetCourses();
+        public IEnumerable<Course> GetCoursesByUserId(int userId);
         public Course GetCourseById(int id);
         public int ChangeEnrollmentStatus(StudentCourse studentCourse);
         public int AddCourse(Course course);

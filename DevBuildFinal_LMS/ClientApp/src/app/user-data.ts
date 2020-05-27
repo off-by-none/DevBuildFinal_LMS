@@ -14,4 +14,9 @@ export class UserDataService {
   getAllUsersNames() {
     return this.http.get<string[]>(`/api/user/names`);
   }
+
+  getUserByName(userName: string) {
+    return this.http.get<User>(`/api/user/name/${userName}`);
+  }
+
 }

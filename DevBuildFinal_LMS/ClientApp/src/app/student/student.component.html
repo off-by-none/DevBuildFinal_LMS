@@ -1,4 +1,11 @@
-<h2>Courses</h2>
-<div *ngFor="let course of courses">
-  <h3>{{course.courseName}}</h3>
+<h2>My Courses</h2>
+<div *ngFor="let course of myCourses">
+  <a [routerLink]="['/course', course.courseId]">{{course.courseName}}</a>
+</div>
+
+<br />
+
+<h2>All Courses</h2>
+<div *ngFor="let course of allCourses">
+  <a [routerLink]="['/course', course.courseId]">{{course.courseName}}</a>
 </div>

@@ -7,11 +7,11 @@
 
   <div class="container">
     <label for="uname"><b>Username</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" [(ngModel)]="newUserName" required>
+    <input type="text" placeholder="Enter Username" name="uname" [(ngModel)]="loginUserName" required>
     <div class="errorMsg" [hidden]=!is_invalidUser>User does not exists<br /><br /></div>
 
     <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="newUserPassword" required>
+    <input type="password" placeholder="Enter Password" name="psw" [(ngModel)]="loginUserPassword" required>
 
     <button (click)="submitLogin()">Login</button>
     <label>

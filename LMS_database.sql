@@ -52,7 +52,7 @@ GO
 INSERT INTO Course 
 (courseName, assignedTeacherId)
 VALUES 
-('DevBuild3.0', 2)
+('DevBuild3.0', 4)
 GO
 
 
@@ -66,7 +66,7 @@ INSERT INTO StudentCourse
 (courseId, studentId)
 VALUES 
 (1, 3),
-(1, 4)
+(1, 5)
 GO
 
 CREATE TABLE Module (
@@ -81,3 +81,16 @@ INSERT INTO Module
 VALUES
 ('Module 1', 1),
 ('Module 2', 1)
+
+
+
+/*** STORED PROCS  ***/
+--CREATE PROCEDURE SudentCourses
+--AS
+--SELECT
+--  ut.userId
+--, ut.userName
+--, usertype.userType
+--FROM [LMS].[dbo].[UserTable] ut
+--	LEFT JOIN LMS.dbo.UserTypeDIM usertype ON usertype.userTypeId = ut.userTypeId
+--GO;

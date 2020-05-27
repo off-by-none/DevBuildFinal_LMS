@@ -32,6 +32,12 @@ namespace DevBuildFinal_LMS.Controllers
             return courseData.GetCourseById(id);
         }
 
+        [HttpGet("user/{userId}")]
+        public IEnumerable<Course> GetCoursesByUserId(int userId)
+        {
+            return courseData.GetCoursesByUserId(userId);
+        }
+
         [HttpPut("enrollmentstatus")]
         public object ChangeEnrollmentStatus(StudentCourse studentCourse)
         {

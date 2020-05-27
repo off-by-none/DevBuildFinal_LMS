@@ -1,15 +1,7 @@
-<div style="border: 1px solid red">Home Component</div>
-<app-teacher></app-teacher>
+<app-login *ngIf="!user" [user]="user" (clicked)="onClicked($event)"></app-login>
 
-<h2> course</h2>
-<app-student></app-student>
+<h1 *ngIf="user">Hello {{ user.userName }}!</h1><br />
 
-<!--<div *ngIf="{{user.userTypeId}} == 3" >
-<app-student></app-student>
-</div>
-<div *ngIf="{{user.userTypeId}} == 2">
-  <app-teacher></app-teacher>
-</div>
-
-  this is not working for the user type
-  -->
+<app-student *ngIf="user && user.userTypeId == 3" [user]="user"></app-student>
+<app-teacher *ngIf="user && user.userTypeId == 2"></app-teacher>
+<app-admin *ngIf="user && user.userTypeId == 1"></app-admin>

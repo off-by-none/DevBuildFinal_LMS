@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { User } from '../interfaces/user';
 
 @Component({
@@ -8,8 +8,13 @@ import { User } from '../interfaces/user';
 })
 /** Home component*/
 export class HomeComponent {
-    /** Home ctor */
-    constructor() {
+  user: User; 
 
-    }
+  /** Home ctor */
+  constructor() { }
+
+  onClicked(user: User) {
+    this.user = user;
+  }
+
 }
