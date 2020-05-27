@@ -3,3 +3,8 @@ export interface User {
   userTypeId: number;
   userName: string;
 }
+
+export interface NewUser {
+  userTypeId: number;
+  userName: string;
+}
