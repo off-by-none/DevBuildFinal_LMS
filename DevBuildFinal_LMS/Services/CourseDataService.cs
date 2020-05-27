@@ -78,8 +78,8 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "insert into course (courseName, assignedTeacherId) ";
-            command += "values (@courseName, @assignedTeacherId)";
+            string command = "insert into course (courseName) ";
+            command += "values (@courseName)";
 
             int result = conn.Execute(command, course);
 

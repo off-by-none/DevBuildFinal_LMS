@@ -1,1 +1,16 @@
-﻿<div style="border: 1px solid red">admin Component</div>
+<h2>Create Course</h2>
+
+<table>
+  <tr>
+    <th>Please enter the name of the new course</th>
+  </tr>
+  <tr>
+    <td><input type="text" [(ngModel)]="courseName" id="" /></td>
+    <td><button (click)="submitCourse()" id="add-course">Add Course</button></td>
+    <td> {{message}}</td>
+  </tr>
+</table>
+
+<app-courses></app-courses>
+
+
