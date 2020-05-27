@@ -1,16 +1,45 @@
 <h2>Create Course</h2>
 
-<table>
+<button type="button" (click)="flipHiddenNewCourse()">Create New Course</button>
+<button type="button" (click)="flipHiddenNewUser()">Create New User</button>
+<button type="button" (click)="flipHiddenCourses()">Display Courses</button>
+
+<h3 style="color:red">{{message}}</h3>
+
+<table [hidden]="hiddenNewCourse">
   <tr>
     <th>Please enter the name of the new course</th>
   </tr>
   <tr>
-    <td><input type="text" [(ngModel)]="courseName" id="" /></td>
+    <td><input type="text" [(ngModel)]="courseName" onfocus="this.value=''" id="courseName" /></td>
     <td><button (click)="submitCourse()" id="add-course">Add Course</button></td>
-    <td> {{message}}</td>
   </tr>
 </table>
 
-<app-courses></app-courses>
+<table [hidden]="hiddenNewUser">
+  <tr>
+    <th>Please enter the name of the user you wish to add</th>
+  </tr>
+  <tr>
+    <td><input type="text" [(ngModel)]="userName" onfocus="this.value=''" id="userName" /></td>
+    <td>
+      <input type="radio" id="Student" value="3" [(ngModel)]="userTypeId">
+      <label for="Student">Student</label>
+    </td>
+    <td>
+      <input type="radio" id="Teacher" value="2" [(ngModel)]="userTypeId">
+      <label for="Teacher">Teacher</label>
+    </td>
+    <td>
+      <input type="radio" id="Admin" value="1" [(ngModel)]="userTypeId">
+      <label for="Admin">Admin</label>
+    </td>
+    <td><button (click)="addUser()" id="add-user">Add User</button></td>
+  </tr>
+</table>
+
+<app-courses [hidden]="hiddenCourses"></app-courses>
+
+
 
 

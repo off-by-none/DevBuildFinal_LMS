@@ -61,8 +61,8 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "insert into user (userTypeId, userName) ";
-            command += "values (@userTypeId, @userName";
+            string command = "insert into LMS.dbo.UserTable (userTypeId, userName) ";
+            command += "values (@userTypeId, @userName)";
 
             int result = conn.Execute(command, user);
 
@@ -75,7 +75,7 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "update user set userTypeId = @userTypeId where userId = @userId";
+            string command = "update LMS.dbo.UserTable set userTypeId = @userTypeId where userId = @userId";
 
             int result = conn.Execute(command, new { userTypeId = user.userTypeId, userId = user.userId });
 

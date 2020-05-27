@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './interfaces/User';
+import { User, NewUser } from './interfaces/User';
 
 @Injectable({ providedIn: 'root' })
 
@@ -17,6 +17,10 @@ export class UserDataService {
 
   getUserByName(userName: string) {
     return this.http.get<User>(`/api/user/name/${userName}`);
+  }
+
+  addUser(newUser: NewUser) {
+    return this.http.post<NewUser>(`/api/user/add`, newUser);
   }
 
 }
