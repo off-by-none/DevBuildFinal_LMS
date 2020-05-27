@@ -13,24 +13,14 @@ import { User } from '../interfaces/User';
 export class StudentComponent {
 
   @Input() user: User;
-  allCourses: Course[];
+
   myCourses: Course[];
 
   /** student ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
-    this.getAllCourses();
     this.getMyCourses();
-  }
-
-  getAllCourses() {
-    this.courseData.getAllCourses().subscribe(
-      (data: Course[]) => {
-        this.allCourses = data;
-      },
-      error => console.error(error)
-    );
   }
 
   getMyCourses() {

@@ -17,7 +17,7 @@ export class CourseDataService {
   }
 
   addCourse(newCourse: NewCourse) {
-    return this.http.post<NewCourse>('/api/course/new',newCourse);
+    return this.http.post<NewCourse>('/api/course/add/course',newCourse);
   }
 
 }

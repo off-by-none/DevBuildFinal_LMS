@@ -5,7 +5,4 @@
 
 <br />
 
-<h2>All Courses</h2>
-<div *ngFor="let course of allCourses">
-  <a [routerLink]="['/course', course.courseId]">{{course.courseName}}</a>
-</div>
+<app-courses></app-courses>
