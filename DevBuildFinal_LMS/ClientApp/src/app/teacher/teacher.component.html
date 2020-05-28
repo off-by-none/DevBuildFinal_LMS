@@ -1,3 +1,6 @@
-<app-my-courses [user]="user"></app-my-courses>
+<button type="button" (click)="flipHiddenCourses()">Display Courses</button>
+<button type="button" (click)="flipHiddenMyCourses()">Display My Courses</button>
 
-<app-courses [hidden]="hiddenCourses" [user]="user"></app-courses>
+<app-my-courses *ngIf="!hiddenMyCourses" [user]="user"></app-my-courses>
+
+<app-courses *ngIf="!hiddenCourses" [user]="user"></app-courses>

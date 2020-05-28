@@ -14,9 +14,20 @@ export class TeacherComponent {
 
   @Input() user: User;
 
+  hiddenCourses: boolean = true;
+  hiddenMyCourses: boolean = true;
+
   /** teacher ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
+  }
+
+  flipHiddenCourses() {
+    this.hiddenCourses = !this.hiddenCourses;
+  }
+
+  flipHiddenMyCourses() {
+    this.hiddenMyCourses = !this.hiddenMyCourses;
   }
 }
