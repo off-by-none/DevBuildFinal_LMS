@@ -1,3 +1,7 @@
-<app-my-courses [myCourses]="myCourses"></app-my-courses>
+<button type="button" (click)="flipHiddenCourses()">Display Courses</button>
+<button type="button" (click)="flipHiddenMyCourses()">Display My Courses</button>
+
+<app-my-courses [hidden]="hiddenMyCourses" [user]="user"></app-my-courses>
 <br />
-<app-courses></app-courses>
+
+<app-courses [hidden]="hiddenCourses" [user]="user"></app-courses>

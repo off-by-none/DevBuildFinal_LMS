@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Course, NewCourse } from '../interfaces/course';
 import { CourseDataService } from '../course-data.service';
 import { UserDataService } from '../user-data';
@@ -11,6 +11,8 @@ import { User, NewUser } from '../interfaces/user';
 })
 /** admin component*/
 export class AdminComponent {
+
+  @Input() user: User;
 
   courseName: string;
   userName: string;
@@ -28,18 +30,18 @@ export class AdminComponent {
   constructor(private courseData: CourseDataService, private userData: UserDataService) { }
 
   ngOnInit() {
-    this.getAllCourses();
+    //this.getAllCourses();
     this.getTeachers();
   }
 
-  getAllCourses() {
-    this.courseData.getAllCourses().subscribe(
-      (data: Course[]) => {
-        this.allCourses = data;
-      },
-      error => console.error(error)
-    );
-  }
+  //getAllCourses() {
+  //  this.courseData.getAllCourses().subscribe(
+  //    (data: Course[]) => {
+  //      this.allCourses = data;
+  //    },
+  //    error => console.error(error)
+  //  );
+  //}
 
   getTeachers() {
     this.userData.getTeachers().subscribe(

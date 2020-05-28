@@ -14,24 +14,20 @@ export class StudentComponent {
 
   @Input() user: User;
 
-  myCourses: Course[];
-
+  hiddenCourses: boolean = true;
+  hiddenMyCourses: boolean = true;
+  
   /** student ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
-    this.getMyCourses();
   }
 
-  getMyCourses() {
-    console.log(this.user.userId)
-    this.courseData.getMyCourses(this.user.userId).subscribe(
-      (data: Course[]) => {
-        this.myCourses = data;
-        console.log(this.myCourses)
-      },
-      error => console.error(error)
-    );
+  flipHiddenCourses() {
+    this.hiddenCourses = !this.hiddenCourses;
   }
 
+  flipHiddenMyCourses() {
+    this.hiddenMyCourses = !this.hiddenMyCourses;
+  }
 }

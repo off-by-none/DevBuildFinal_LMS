@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CourseDataService } from '../course-data.service';
 import { Course } from '../interfaces/course';
 import { User } from '../interfaces/User';
@@ -10,6 +10,8 @@ import { User } from '../interfaces/User';
 })
 /** courses component*/
 export class CoursesComponent {
+
+  @Input() user: User;
 
   allCourses: Course[];
   hiddenCourseDetail: boolean[] = [];

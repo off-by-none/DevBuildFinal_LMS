@@ -14,23 +14,9 @@ export class TeacherComponent {
 
   @Input() user: User;
 
-  myTeacherCourses: Course[];
-
   /** teacher ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
-    this.getMyTeacherCourses();
   }
-
-  getMyTeacherCourses() {
-    console.log(this.user.userId)
-    this.courseData.getMyTeacherCourses(this.user.userId).subscribe(
-      (data: Course[]) => {
-        this.myTeacherCourses = data;
-      },
-      error => console.error(error)
-    );
-  }
-
 }
