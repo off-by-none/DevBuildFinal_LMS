@@ -4,4 +4,4 @@
 
 <app-student *ngIf="user && user.userTypeId == 3" [user]="user"></app-student>
 <app-teacher *ngIf="user && user.userTypeId == 2" [user]="user"></app-teacher>
-<app-admin *ngIf="user && user.userTypeId == 1"></app-admin>
+<app-admin *ngIf="user && user.userTypeId == 1" [user]="user"></app-admin>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Course, NewCourse } from '../interfaces/course';
 import { CourseDataService } from '../course-data.service';
 import { UserDataService } from '../user-data';
@@ -11,6 +11,8 @@ import { User, NewUser } from '../interfaces/user';
 })
 /** admin component*/
 export class AdminComponent {
+
+  @Input() user: User;
 
   courseName: string;
   userName: string;

@@ -1,5 +1,9 @@
 <h2>My Courses</h2>
-<div *ngFor="let course of myCourses">
+<!--<div *ngFor="let course of myCourses">
   <a [routerLink]="['/course', course.courseId]">{{course.courseName}}</a>
-</div>
+</div>-->
 
+<div *ngFor="let course of myCourses; index as i">
+  <button type="button" (click)="flipHiddenCourseDetail(i)">{{course.courseName}}</button>
+  <p [hidden]="hiddenCourseDetail[i]">{{course.courseId}}</p> <!--this needs to be updated when we have more data-->
+</div>
