@@ -8,6 +8,13 @@
 
 <br />
 
+<h5>Students</h5>
+<div *ngFor="let s of students">
+  {{ s.userName }}
+</div>
+
+<br />
+
 <!--pass course.courseId-->
 <button (click)="add()">Enroll</button>
 

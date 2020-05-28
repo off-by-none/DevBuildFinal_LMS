@@ -100,6 +100,12 @@ namespace DevBuildFinal_LMS.Controllers
             return courseData.GetResources(moduleId);
         }
 
+        [HttpGet("users/{courseId}")]
+        public IEnumerable<User> GetStudentsByCourseId(int courseId)
+        {
+            return courseData.GetStudentsByCourseId(courseId);
+        }
+
         [HttpDelete("{id}")]
         public Object DeleteCourse(int id)
         {

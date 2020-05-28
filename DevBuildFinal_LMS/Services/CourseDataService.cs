@@ -182,6 +182,23 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
+        public IEnumerable<User> GetStudentsByCourseId(int courseId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT u.* FROM LMS.dbo.UserTable u ";
+            command += "LEFT JOIN LMS.dbo.StudentCourse sc ON sc.studentId = u.userId ";
+            command += "where sc.courseId = @val ";
+
+            IEnumerable<User> result = conn.Query<User>(command, new { val = courseId });
+
+            conn.Close();
+
+            return result;
+        }
+
+
+
         public int DeleteCourse(int id)
         {
             SqlConnection conn = new SqlConnection(connString);

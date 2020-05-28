@@ -21,5 +21,6 @@ namespace DevBuildFinal_LMS.Services
         public IEnumerable<Module> GetModulesByCourseId(int courseId);
         public IEnumerable<Assignment> GetAssignments(int moduleId);
         public IEnumerable<Resource> GetResources(int moduleId);
+        public IEnumerable<User> GetStudentsByCourseId(int courseId);
     }
 }

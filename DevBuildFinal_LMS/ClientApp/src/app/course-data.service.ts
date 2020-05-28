@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Course, Module, NewCourse, Assignments, Resource } from './interfaces/course';
+import { User } from './interfaces/User';
 
 
 @Injectable()
@@ -42,6 +43,10 @@ export class CourseDataService {
 
   getResources(moduleId: number) {
     return this.http.get<Resource[]>(`/api/course/module/resources/${moduleId}`);
+  }
+
+  getStudentsByCourseId(courseId: number) {
+    return this.http.get<User[]>(`/api/course/users/${courseId}`);
   }
 
 }

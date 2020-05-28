@@ -2,6 +2,7 @@ import { Component, Output, EventEmitter } from '@angular/core';
 import { CourseDataService } from '../course-data.service';
 import { Course, Module } from '../interfaces/course'
 import { ActivatedRoute } from '@angular/router';
+import { User } from '../interfaces/user';
 
 @Component({
     selector: 'app-course-detail',
@@ -15,6 +16,7 @@ export class CourseDetailComponent {
   id: number;
   course: Course;
   modules: Module[];
+  students: User[];
 
   /** course-detail ctor */
   constructor(private courseData: CourseDataService, private route: ActivatedRoute) {}
@@ -22,6 +24,7 @@ export class CourseDetailComponent {
   ngOnInit() {
     this.getModules();
     this.getCourseById();
+    this.getStudentsByCourseId();
   }
 
   add(courseId: number) {
@@ -52,6 +55,17 @@ export class CourseDetailComponent {
 
       this.courseData.getCourseById(this.id).subscribe(
         (data: Course) => { this.course = data },
+        error => console.error(error)
+      );
+    })
+  }
+
+  getStudentsByCourseId() {
+    this.route.params.subscribe(params => {
+      this.id = +params['courseId'];
+
+      this.courseData.getStudentsByCourseId(this.id).subscribe(
+        (data: User[]) => { this.students = data },
         error => console.error(error)
       );
     })
