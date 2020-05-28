@@ -1,7 +1,7 @@
-<button type="button" (click)="flipHiddenNewCourse()">Create New Course</button>
-<button type="button" (click)="flipHiddenNewUser()">Create New User</button>
 <button type="button" (click)="flipHiddenCourses()">Display Courses</button>
+<button type="button" (click)="flipHiddenMyCourses()">Display My Courses</button>
 
-<app-my-courses [user]="user"></app-my-courses>
+<app-my-courses [hidden]="hiddenMyCourses" [user]="user"></app-my-courses>
 <br />
-<app-courses [user]="user"></app-courses>
+
+<app-courses [hidden]="hiddenCourses" [user]="user"></app-courses>

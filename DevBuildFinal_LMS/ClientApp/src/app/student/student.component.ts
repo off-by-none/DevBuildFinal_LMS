@@ -13,10 +13,21 @@ import { User } from '../interfaces/User';
 export class StudentComponent {
 
   @Input() user: User;
+
+  hiddenCourses: boolean = true;
+  hiddenMyCourses: boolean = true;
   
   /** student ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
+  }
+
+  flipHiddenCourses() {
+    this.hiddenCourses = !this.hiddenCourses;
+  }
+
+  flipHiddenMyCourses() {
+    this.hiddenMyCourses = !this.hiddenMyCourses;
   }
 }
