@@ -3,7 +3,5 @@
 <div *ngFor="let course of allCourses; index as i">
   <button type="button" (click)="flipHiddenCourseDetail(i)">{{course.courseName}}</button>
   <button type="button" (click)="deleteCourse(course.courseId)">Delete</button>
-  <p [hidden]="hiddenCourseDetail[i]">{{course.courseId}}</p>
-
-  <!--<a [routerLink]="['/course', course.courseId]">{{course.courseName}}</a>-->
+  <p [hidden]="hiddenCourseDetail[i]">{{course.courseId}}</p> <!--this needs to be updated when we have more data-->
 </div>
