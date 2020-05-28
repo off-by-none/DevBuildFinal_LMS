@@ -20,4 +20,8 @@ export class CourseDataService {
     return this.http.post<NewCourse>('/api/course/add/course',newCourse);
   }
 
+  deleteCourse(id: number) {
+    return this.http.delete(`/api/course/` + id);
+  }
+
 }

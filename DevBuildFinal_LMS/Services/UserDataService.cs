@@ -31,6 +31,19 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
+        public IEnumerable<User> GetTeachers()
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT * FROM LMS.dbo.UserTable where userTypeId = 2";
+
+            IEnumerable<User> result = conn.Query<User>(command);
+
+            conn.Close();
+
+            return result;
+        }
+
         public IEnumerable<string> GetUsersNames()
         {
             SqlConnection conn = new SqlConnection(connString);

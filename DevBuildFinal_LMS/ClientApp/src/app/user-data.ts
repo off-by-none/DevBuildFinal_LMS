@@ -11,6 +11,10 @@ export class UserDataService {
     return this.http.get<User[]>(`/api/user`);
   }
 
+  getTeachers() {
+    return this.http.get<User[]>(`/api/user/teachers`);
+  }
+
   getAllUsersNames() {
     return this.http.get<string[]>(`/api/user/names`);
   }
