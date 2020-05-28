@@ -36,7 +36,9 @@
   </tr>
 </table>
 
-<app-courses [hidden]="hiddenCourses" [user]="user"></app-courses>
+<div *ngIf="!hiddenCourses">
+  <app-courses [user]="user"></app-courses>
+</div>
 
 
 
