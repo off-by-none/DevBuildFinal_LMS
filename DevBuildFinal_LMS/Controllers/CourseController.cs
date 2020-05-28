@@ -39,7 +39,7 @@ namespace DevBuildFinal_LMS.Controllers
         }
 
         [HttpPut("enrollmentstatus")]
-        public object ChangeEnrollmentStatus(StudentCourse studentCourse)
+        public Object ChangeEnrollmentStatus(StudentCourse studentCourse)
         {
             var result = courseData.ChangeEnrollmentStatus(studentCourse);
 
@@ -47,7 +47,7 @@ namespace DevBuildFinal_LMS.Controllers
         }
 
         [HttpPost("add/course")]
-        public object AddCourse(Course course)
+        public Object AddCourse(Course course)
         {
             var result = courseData.AddCourse(course);
 
@@ -55,7 +55,7 @@ namespace DevBuildFinal_LMS.Controllers
         }
 
         [HttpPost("add/teacher")]
-        public object AddTeacherToCourse(Course course)
+        public Object AddTeacherToCourse(Course course)
         {
             var result = courseData.AddTeacherToCourse(course);
 
@@ -63,7 +63,7 @@ namespace DevBuildFinal_LMS.Controllers
         }
 
         [HttpPost("add/module")]
-        public object AddModule(Module module)
+        public Object AddModule(Module module)
         {
             var result = courseData.AddModule(module);
 
@@ -73,6 +73,14 @@ namespace DevBuildFinal_LMS.Controllers
         public IEnumerable<Module> ViewModulesById(int id)
         {
             return courseData.ViewModulesById(id);
+        }
+
+        [HttpDelete("{id}")]
+        public Object DeleteCourse(int id)
+        {
+            var result = courseData.DeleteCourse(id);
+
+            return UpdateError(result);
         }
 
         public object UpdateError(int result)

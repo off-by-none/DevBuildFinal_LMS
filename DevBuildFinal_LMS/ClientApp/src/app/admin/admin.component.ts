@@ -16,7 +16,10 @@ export class AdminComponent {
   userName: string;
   userTypeId: number;
   message: string;
+
+  teachers: User[];
   allCourses: Course[];
+
   hiddenCourses: boolean = true;
   hiddenNewCourse: boolean = true;
   hiddenNewUser: boolean = true;
@@ -26,12 +29,22 @@ export class AdminComponent {
 
   ngOnInit() {
     this.getAllCourses();
+    this.getTeachers();
   }
 
   getAllCourses() {
     this.courseData.getAllCourses().subscribe(
       (data: Course[]) => {
         this.allCourses = data;
+      },
+      error => console.error(error)
+    );
+  }
+
+  getTeachers() {
+    this.userData.getTeachers().subscribe(
+      (data: User[]) => {
+        this.teachers = data;
       },
       error => console.error(error)
     );

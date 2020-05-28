@@ -16,5 +16,6 @@ namespace DevBuildFinal_LMS.Services
         public int AddTeacherToCourse(Course course);
         public int AddModule(Module module);
         public IEnumerable<Module> ViewModulesById(int id);
+        public int DeleteCourse(int id);
     }
 }

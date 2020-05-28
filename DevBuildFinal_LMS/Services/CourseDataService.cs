@@ -127,5 +127,18 @@ namespace DevBuildFinal_LMS.Services
 
             return result;
         }
+
+        public int DeleteCourse(int id)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "Delete from course where courseId = @id";
+
+            int result = conn.Execute(command, new { id = id });
+
+            conn.Close();
+
+            return result;
+        }
     }
 }
