@@ -12,9 +12,7 @@ import { User } from '../interfaces/User';
 export class CoursesComponent {
 
   allCourses: Course[];
-
   hiddenCourseDetail: boolean[] = [];
-
 
   /** courses ctor */
   constructor(private courseData: CourseDataService) { }
@@ -51,4 +49,5 @@ export class CoursesComponent {
     }
     this.hiddenCourseDetail[i] = !this.hiddenCourseDetail[i];
   }
+
 }

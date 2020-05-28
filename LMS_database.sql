@@ -23,7 +23,9 @@ VALUES
 (2, 'Peter'),
 (3, 'Brandon'),
 (3, 'Soc'),
-(3, 'O');
+(3, 'O'),
+(2, 'Neil deGrasse Tyson'),
+(2, 'Elon Musk');
 GO
 
 
@@ -52,7 +54,11 @@ GO
 INSERT INTO Course 
 (courseName, assignedTeacherId)
 VALUES 
-('DevBuild3.0', 4)
+('DevBuild3.0', 2),
+('Front-end', 2),
+('DevBuild2.0', 4),
+('Physics', 8),
+('Material Science', 9);
 GO
 
 
@@ -66,7 +72,10 @@ INSERT INTO StudentCourse
 (courseId, studentId)
 VALUES 
 (1, 3),
-(1, 5)
+(1, 5),
+(1, 6),
+(1, 7),
+(2, 3);
 GO
 
 CREATE TABLE Module (
@@ -79,9 +88,38 @@ GO
 INSERT INTO Module
 (moduleName, courseId)
 VALUES
-('Module 1', 1),
-('Module 2', 1)
+('C# Basics', 1),
+('Object-Oriented Programming', 1),
+('Dapper', 1);
+GO
 
+CREATE TABLE Assignment (
+	assignmentID int identity(1,1) primary key not null,
+	assignmentName varchar(128) not null,
+	moduleId int foreign key references Module(moduleId),
+	assignmentURL varchar(512)
+);
+GO
+
+INSERT INTO Assignment
+(assignmentName, moduleId, assignmentURL)
+VALUES
+('Dapper One-Day Project', 3, 'http://docs.google.com/document/d/1-Y4JHFQocgTciKpj4U2hNTPhxZR8iNCJeYBYGinwVEk/edit')
+GO
+
+CREATE TABLE Resources (
+	resourceID int identity(1,1) primary key not null,
+	resourceName varchar(128),
+	moduleId int foreign key references Module(moduleId),
+	resourceURL varchar(512)
+);
+GO
+
+INSERT INTO Resources
+(resourceName, moduleId, resourceURL)
+VALUES
+('Dapper Video', 3, 'https://www.youtube.com/embed/eKkh5Xm0OlU')
+GO
 
 
 /*** STORED PROCS  ***/

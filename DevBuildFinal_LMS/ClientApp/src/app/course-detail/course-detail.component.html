@@ -1,6 +1,12 @@
-<h3>Course Name</h3>
-<h5>Other Course Info</h5>
-<h5>modules, assignments, and resources</h5>
+<h3>{{ course?.courseName }}</h3>
+<br />
+
+<h5>Modules</h5>
+<div *ngFor="let m of modules">
+  <a [routerLink]="['/module', m.moduleId]">{{ m.moduleName }}</a>
+</div>
+
+<br />
 
 <!--pass course.courseId-->
 <button (click)="add()">Enroll</button>

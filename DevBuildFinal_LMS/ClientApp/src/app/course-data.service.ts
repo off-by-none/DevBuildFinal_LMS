@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Course, NewCourse } from './interfaces/course';
+import { Course, Module, NewCourse, Assignments, Resource } from './interfaces/course';
 
 
 @Injectable()
@@ -16,12 +16,32 @@ export class CourseDataService {
     return this.http.get<Course[]>(`/api/course/user/${userId}`);
   }
 
+  getMyTeacherCourses(userId: number) {
+    return this.http.get<Course[]>(`/api/course/teacher/${userId}`);
+  }
+
   addCourse(newCourse: NewCourse) {
     return this.http.post<NewCourse>('/api/course/add/course',newCourse);
   }
 
   deleteCourse(id: number) {
     return this.http.delete(`/api/course/` + id);
+  }
+
+  getModules(courseId: number) {
+    return this.http.get<Module[]>(`/api/course/modules/${courseId}`);
+  }
+
+  getCourseById(courseId: number) {
+    return this.http.get<Course>(`/api/course/${courseId}`);
+  }
+
+  getAssignments(moduleId: number) {
+    return this.http.get<Assignments[]>(`/api/course/module/assignments/${moduleId}`);
+  }
+
+  getResources(moduleId: number) {
+    return this.http.get<Resource[]>(`/api/course/module/resources/${moduleId}`);
   }
 
 }

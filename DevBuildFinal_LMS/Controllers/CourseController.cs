@@ -38,6 +38,12 @@ namespace DevBuildFinal_LMS.Controllers
             return courseData.GetCoursesByUserId(userId);
         }
 
+        [HttpGet("teacher/{userId}")]
+        public IEnumerable<Course> GetCoursesByTeacherId(int userId)
+        {
+            return courseData.GetCoursesByTeacherId(userId);
+        }
+
         [HttpPut("enrollmentstatus")]
         public Object ChangeEnrollmentStatus(StudentCourse studentCourse)
         {
@@ -69,10 +75,29 @@ namespace DevBuildFinal_LMS.Controllers
 
             return UpdateError(result);
         }
+
         [HttpGet("module/{id}")]
         public IEnumerable<Module> ViewModulesById(int id)
         {
             return courseData.ViewModulesById(id);
+        }
+
+        [HttpGet("modules/{courseId}")]
+        public IEnumerable<Module> GetModulesByCourseId(int courseId)
+        {
+            return courseData.GetModulesByCourseId(courseId);
+        }
+
+        [HttpGet("module/assignments/{moduleId}")]
+        public IEnumerable<Assignment> GetAssignments(int moduleId)
+        {
+            return courseData.GetAssignments(moduleId);
+        }
+
+        [HttpGet("module/resources/{moduleId}")]
+        public IEnumerable<Resource> GetResources(int moduleId)
+        {
+            return courseData.GetResources(moduleId);
         }
 
         [HttpDelete("{id}")]
@@ -94,7 +119,5 @@ namespace DevBuildFinal_LMS.Controllers
                 return new { Success = false, Message = "Error" };
             }
         }
-
-
     }
 }

@@ -13,7 +13,10 @@ import { StudentComponent } from './student/student.component'
 import { TeacherComponent } from './teacher/teacher.component'
 import { AdminComponent } from './admin/admin.component'
 import { CourseDetailComponent } from './course-detail/course-detail.component'
+import { ModuleComponent } from './module/module.component'
+import { MyCoursesComponent } from './my-courses/my-courses.component'
 import { CourseDataService } from './course-data.service';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +28,9 @@ import { CourseDataService } from './course-data.service';
     TeacherComponent,
     AdminComponent,
     CourseDetailComponent,
-    CoursesComponent
+    CoursesComponent,
+    ModuleComponent,
+    MyCoursesComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +38,7 @@ import { CourseDataService } from './course-data.service';
     FormsModule,
     RouterModule.forRoot([
       { path: 'course/:courseId', component: CourseDetailComponent },
+      { path: 'module/:moduleId', component: ModuleComponent },
       { path: '', component: HomeComponent },
     ])
   ],

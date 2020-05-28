@@ -35,9 +35,9 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "select * from course where courseId = @id";
+            string command = "select * from course where courseId = @val";
 
-            Course result = conn.QueryFirstOrDefault<Course>(command, new { id = id });
+            Course result = conn.QueryFirstOrDefault<Course>(command, new { val = id });
 
             conn.Close();
 
@@ -54,6 +54,21 @@ namespace DevBuildFinal_LMS.Services
             command += "WHERE studentId = @val ";
 
             IEnumerable<Course> result = conn.Query<Course>(command, new{ val = userId });
+
+            conn.Close();
+
+            return result;
+        }
+
+        public IEnumerable<Course> GetCoursesByTeacherId(int userId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT * ";
+            command += "FROM LMS.dbo.Course ";
+            command += "WHERE assignedTeacherId = @val ";
+
+            IEnumerable<Course> result = conn.Query<Course>(command, new { val = userId });
 
             conn.Close();
 
@@ -122,6 +137,45 @@ namespace DevBuildFinal_LMS.Services
             string command = "select * from module where id = id";
 
             IEnumerable<Module> result = conn.Query<Module>(command);
+
+            conn.Close();
+
+            return result;
+        }
+
+        public IEnumerable<Module> GetModulesByCourseId(int courseId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "select * from module where courseId = @val";
+
+            IEnumerable<Module> result = conn.Query<Module>(command, new { val = courseId });
+
+            conn.Close();
+
+            return result;
+        }
+
+        public IEnumerable<Assignment> GetAssignments(int moduleId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "select * from assignment where moduleId = @val";
+
+            IEnumerable<Assignment> result = conn.Query<Assignment>(command, new { val = moduleId });
+
+            conn.Close();
+
+            return result;
+        }
+
+        public IEnumerable<Resource> GetResources(int moduleId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "select * from resources where moduleId = @val";
+
+            IEnumerable<Resource> result = conn.Query<Resource>(command, new { val = moduleId });
 
             conn.Close();
 

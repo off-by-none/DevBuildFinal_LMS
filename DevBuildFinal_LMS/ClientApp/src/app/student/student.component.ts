@@ -28,6 +28,7 @@ export class StudentComponent {
     this.courseData.getMyCourses(this.user.userId).subscribe(
       (data: Course[]) => {
         this.myCourses = data;
+        console.log(this.myCourses)
       },
       error => console.error(error)
     );

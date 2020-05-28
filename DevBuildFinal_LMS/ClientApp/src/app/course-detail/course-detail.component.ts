@@ -1,6 +1,7 @@
 import { Component, Output, EventEmitter } from '@angular/core';
 import { CourseDataService } from '../course-data.service';
-import { Course } from '../interfaces/course'
+import { Course, Module } from '../interfaces/course'
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-course-detail',
@@ -11,9 +12,17 @@ import { Course } from '../interfaces/course'
 export class CourseDetailComponent {
 
   @Output() deleteEmitter = new EventEmitter<number>();
+  id: number;
+  course: Course;
+  modules: Module[];
 
   /** course-detail ctor */
-  constructor(private courseData: CourseDataService) {}
+  constructor(private courseData: CourseDataService, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.getModules();
+    this.getCourseById();
+  }
 
   add(courseId: number) {
     //this.courseData.postCourse(courseId).subscribe(
@@ -24,6 +33,28 @@ export class CourseDetailComponent {
 
   delete(courseId: number) {
     //this.deleteEmitter.emit(courseId);
+  }
+
+  getModules() {
+    this.route.params.subscribe(params => {
+      this.id = +params['courseId'];
+
+      this.courseData.getModules(this.id).subscribe(
+        (data: Module[]) => { this.modules = data },
+        error => console.error(error)
+      );
+    })
+  }
+
+  getCourseById() {
+    this.route.params.subscribe(params => {
+      this.id = +params['courseId'];
+
+      this.courseData.getCourseById(this.id).subscribe(
+        (data: Course) => { this.course = data },
+        error => console.error(error)
+      );
+    })
   }
 
 }
