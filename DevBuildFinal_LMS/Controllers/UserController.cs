@@ -32,6 +32,12 @@ namespace DevBuildFinal_LMS.Controllers
             return userData.GetTeachers();
         }
 
+        [HttpGet("regular")]
+        public IEnumerable<User> GetRegularUsers()
+        {
+            return userData.GetRegularUsers();
+        }
+
         [HttpGet("names")]
         public IEnumerable<string> GetUsersNames()
         {
@@ -46,7 +52,7 @@ namespace DevBuildFinal_LMS.Controllers
 
 
         [HttpPost("add")]
-        public object AddUser(User user)
+        public Object AddUser(User user)
         {
             var result = userData.AddUser(user);
 
@@ -54,7 +60,7 @@ namespace DevBuildFinal_LMS.Controllers
         }
 
         [HttpPut("admin/change")]
-        public object ChangeAdminStatus(User user)
+        public Object ChangeAdminStatus(User user)
         {
             var result = userData.ChangeAdminStatus(user);
 
