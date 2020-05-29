@@ -1,14 +1,30 @@
 
 <h5>Assignments</h5>
+<input type="text" [(ngModel)]="assignmentName" placeholder="Enter Assignment's Name" />
+<br />
+<input type="text" [(ngModel)]="assignmentURL" placeholder="Enter Assignment's URL" />
+<br />
+<button type="button" (click)="addAssignment()">Add Assignment</button>
+<br />
+<br />
 <div *ngFor="let a of assignments">
   <a target="_blank" href={{a.assignmentURL}}>{{ a.assignmentName }}</a>
 </div>
 
 <br />
+<br />
 
 <h5>Resources</h5>
+<input type="text" [(ngModel)]="resourceName" placeholder="Enter Resource's Name" />
+<br />
+<input type="text" [(ngModel)]="resourceURL" placeholder="Enter Resource's URL" />
+<br />
+<button type="button" (click)="addResource()">Add Resource</button>
+<br />
+<br />
 <div *ngFor="let r of resources">
   <a target="_blank" href={{r.resourceURL}}>{{ r.resourceName }}</a>
   <br />
   <iframe width="420" height="315" src="https://www.youtube.com/embed/eKkh5Xm0OlU"></iframe>
 </div>
+
