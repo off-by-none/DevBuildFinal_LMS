@@ -1,7 +1,8 @@
-<br /><br />
+
+<br />
 <h2>All Courses</h2>
 <div *ngFor="let course of allCourses; index as i">
   <button type="button" (click)="flipHiddenCourseDetail(i)">{{course.courseName}}</button>
   <button type="button" [hidden]="user.userTypeId != 1" (click)="deleteCourse(course.courseId)">Delete</button>
-  <p [hidden]="hiddenCourseDetail[i]">{{course.courseId}}</p> <!--this needs to be updated when we have more data-->
+  <p [hidden]="hiddenCourseDetail[i]"></p> <!--this needs to be updated when we have more data-->
 </div>

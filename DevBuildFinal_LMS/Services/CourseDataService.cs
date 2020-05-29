@@ -197,8 +197,6 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
-
-
         public int DeleteCourse(int id)
         {
             SqlConnection conn = new SqlConnection(connString);
@@ -209,6 +207,26 @@ namespace DevBuildFinal_LMS.Services
 
             conn.Close();
 
+            return result;
+        }
+
+        public int AddAssignment(Assignment assignment)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            string command = "INSERT INTO Assignment (assignmentName, moduleId, assignmentURL) ";
+            command += "values (@assignmentName, @moduleId, @assignmentURL)";
+            int result = conn.Execute(command, assignment);
+            conn.Close();
+            return result;
+        }
+
+        public int AddResource(Resource resource)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+            string command = "INSERT INTO Resources (resourceName, moduleId, resourceURL) ";
+            command += "VALUES (@resourceName, @moduleId, @resourceURL)";
+            int result = conn.Execute(command, resource);
+            conn.Close();
             return result;
         }
     }

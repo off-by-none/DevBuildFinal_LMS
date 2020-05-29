@@ -58,4 +58,12 @@ export class CourseDataService {
     return this.http.post<Module>(`/api/course/add/module`, newModule);
   }
 
+  addAssignment(newAssignment: Assignments) {
+    return this.http.post<Assignments>(`/api/course/module/add/assignment`, newAssignment);
+  }
+
+  addResource(newResource: Resource) {
+    return this.http.post<Resource>(`/api/course/module/add/resource`, newResource);
+  }
+
 }

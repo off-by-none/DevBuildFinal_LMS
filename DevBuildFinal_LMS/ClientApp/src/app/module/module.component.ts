@@ -49,4 +49,34 @@ export class ModuleComponent {
     })
   }
 
+  addAssignment() {
+    let newAssignment: Assignments = {
+      assignmentId: 0,
+      assignmentName: this.assignmentName,
+      assignmentURL: this.assignmentURL,
+      moduleId: +this.id
+    }
+    this.courseData.addAssignment(newAssignment).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      error => console.error(error)
+    );
+  }
+
+  addResource() {
+    let newResource: Resource = {
+      resourceId: 0,
+      resourceName: this.resourceName,
+      resourceURL: this.resourceURL,
+      moduleId: +this.id
+    }
+    this.courseData.addResource(newResource).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      error => console.error(error)
+    );
+  }
+
 }

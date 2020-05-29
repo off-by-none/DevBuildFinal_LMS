@@ -114,6 +114,22 @@ namespace DevBuildFinal_LMS.Controllers
             return UpdateError(result);
         }
 
+        [HttpPost("module/add/assignment")]
+        public Object AddAssignment(Assignment assignment)
+        {
+            var result = courseData.AddAssignment(assignment);
+
+            return UpdateError(result);
+        }
+
+        [HttpPost("module/add/resource")]
+        public Object AddResource(Resource resource)
+        {
+            var result = courseData.AddResource(resource);
+
+            return UpdateError(result);
+        }
+
         public object UpdateError(int result)
         {
             if (result == 1)
