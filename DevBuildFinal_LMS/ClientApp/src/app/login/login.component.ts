@@ -58,6 +58,7 @@ export class LoginComponent {
   cancelLogin = function () {
     this.loginUserName = '';
     this.loginUserPassword = '';
+    this.is_invalidUser = false;
   }
 
 }

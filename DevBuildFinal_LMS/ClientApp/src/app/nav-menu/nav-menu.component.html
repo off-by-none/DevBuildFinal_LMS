@@ -3,7 +3,7 @@
     class="navbar navbar-expand-lg navbar-dark navbar-full" style="background-color: #1E90FF"> <br/>
   
     <div class="container">
-      <a class="navbar-brand" [routerLink]="['/home']">DevBuild LMS</a>
+      <a class="navbar-brand" [routerLink]="['']">DevBuild LMS</a>
       <button
         class="navbar-toggler"
         type="button"
@@ -20,18 +20,20 @@
         [ngClass]="{ show: isExpanded }"
       >
         <ul class="navbar-nav flex-grow">
-          <li
+
+          <!--<li
             class="nav-item"
             [routerLinkActive]="['link-active']"
             [routerLinkActiveOptions]="{ exact: true }"
-          >
-            <a class="nav-link text-dark" [routerLink]="['/home']">Home</a>
+          ><a class="nav-link text-dark" [routerLink]="['/home']">Home</a>
+          </li>-->
+
+          <li
+              class="nav-item"
+              [routerLinkActive]="['link-active']"
+          ><a class="nav-link text-dark" [routerLink]="['']">Logout</a>
           </li>
-          <li class="nav-item" [routerLinkActive]="['link-active']">
-            <a class="nav-link text-dark" [routerLink]="['']"
-              >Login</a
-            >
-          </li>
+
         </ul>
       </div>
     </div>
