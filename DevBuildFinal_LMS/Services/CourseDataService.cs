@@ -48,7 +48,7 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "SELECT c.* ";
+            string command = "SELECT DISTINCT c.* ";
             command += "FROM LMS.dbo.StudentCourse sc ";
             command += "LEFT JOIN LMS.dbo.Course c ON c.courseId = sc.courseId ";
             command += "WHERE studentId = @val ";
@@ -227,6 +227,20 @@ namespace DevBuildFinal_LMS.Services
             command += "VALUES (@resourceName, @moduleId, @resourceURL)";
             int result = conn.Execute(command, resource);
             conn.Close();
+            return result;
+        }
+
+        public int Enroll(StudentCourse studentCourse)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "insert into StudentCourse (studentId, courseId) ";
+            command += "values (@studentId, @courseId)";
+
+            int result = conn.Execute(command, studentCourse);
+
+            conn.Close();
+
             return result;
         }
     }

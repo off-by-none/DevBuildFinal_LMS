@@ -10,6 +10,7 @@ import { User } from '../interfaces/user';
 })
 /** my-courses component*/
 export class MyCoursesComponent {
+
   @Input() user: User;
 
   myCourses: Course[];
@@ -78,6 +79,7 @@ export class MyCoursesComponent {
       courseId: selectedCourseId
     }
     this.courseData.addModule(newModule).subscribe();
+    this.getModules(selectedCourseId);
   }
 
   flipHiddenModuleName(course: Course) {

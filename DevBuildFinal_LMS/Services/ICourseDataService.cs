@@ -24,5 +24,6 @@ namespace DevBuildFinal_LMS.Services
         public IEnumerable<User> GetStudentsByCourseId(int courseId);
         public int AddAssignment(Assignment assignment);
         public int AddResource(Resource resource);
+        public int Enroll(StudentCourse studentCourse);
     }
 }

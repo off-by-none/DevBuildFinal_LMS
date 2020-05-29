@@ -4,5 +4,8 @@
 <div *ngFor="let course of allCourses; index as i">
   <button type="button" (click)="flipHiddenCourseDetail(i)" class="courseName">{{course.courseName}}</button>
   <button type="button" [hidden]="user.userTypeId != 1" (click)="deleteCourse(course.courseId)" class="deletebtn">x</button>
-  <p [hidden]="hiddenCourseDetail[i]"></p> <!--this needs to be updated when we have more data-->
+
+  <p [hidden]="hiddenCourseDetail[i]">
+    <button *ngIf="user.userTypeId == 3" type="button" (click)="enroll(course.courseId)">Enroll</button>
+    </p> <!--this needs to be updated when we have more data-->
 </div>

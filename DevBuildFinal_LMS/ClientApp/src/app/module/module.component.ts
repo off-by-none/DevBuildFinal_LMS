@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { Assignments, Resource } from '../interfaces/course'
+import { Component, Input } from '@angular/core';
+import { Assignments, Resource } from '../interfaces/course';
+import { User } from '../interfaces/User';
 import { CourseDataService } from '../course-data.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -11,13 +12,17 @@ import { ActivatedRoute } from '@angular/router';
 /** module component*/
 export class ModuleComponent {
 
+  @Input() user: User;
   id: number;
+  userTypeId: number;
   assignments: Assignments[];
   resources: Resource[];
   assignmentName: string;
   assignmentURL: string;
   resourceName: string;
   resourceURL: string;
+  is_HiddenAddAssignment: boolean = true;
+  is_HiddenAddResource: boolean = true;
 
   /** module ctor */
   constructor(private courseData: CourseDataService, private route: ActivatedRoute) { }
@@ -30,6 +35,7 @@ export class ModuleComponent {
   getAssignments() {
     this.route.params.subscribe(params => {
       this.id = +params['moduleId'];
+      this.userTypeId = +params['userTypeId'];
 
       this.courseData.getAssignments(this.id).subscribe(
         (data: Assignments[]) => { this.assignments = data },
@@ -62,6 +68,8 @@ export class ModuleComponent {
       },
       error => console.error(error)
     );
+    this.flipHiddenAddAssignment();
+    this.getAssignments();
   }
 
   addResource() {
@@ -77,6 +85,16 @@ export class ModuleComponent {
       },
       error => console.error(error)
     );
+    this.flipHiddenAddResource();
+    this.getResources()
+  }
+
+  flipHiddenAddAssignment() {
+    this.is_HiddenAddAssignment = !this.is_HiddenAddAssignment;
+  }
+
+  flipHiddenAddResource() {
+    this.is_HiddenAddResource = !this.is_HiddenAddResource;
   }
 
 }

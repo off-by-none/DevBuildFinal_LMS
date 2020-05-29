@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-import { Course, Module, NewCourse, Assignments, Resource } from './interfaces/course';
+import { Course, Module, NewCourse, Assignments, Resource, StudentCourse } from './interfaces/course';
 import { User } from './interfaces/User';
 
 
@@ -64,6 +64,10 @@ export class CourseDataService {
 
   addResource(newResource: Resource) {
     return this.http.post<Resource>(`/api/course/module/add/resource`, newResource);
+  }
+
+  enroll(newStudentCourse: StudentCourse) {
+    return this.http.post<StudentCourse>('/api/course/enroll', newStudentCourse);
   }
 
 }

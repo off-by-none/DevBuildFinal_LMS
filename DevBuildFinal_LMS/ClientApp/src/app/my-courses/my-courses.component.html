@@ -4,11 +4,11 @@
 
 <span *ngFor="let course of myCourses; index as i">
   <button type="button" (click)="flipHiddenCourseDetail(i, course.courseId)" class="coursebtn">{{course.courseName}}</button>
-  <button type="button" (click)="flipHiddenModuleName(course)" title="Add a module to {{course.courseName}}" class="plusbtn">+</button>&nbsp;
+  <button [hidden]="user.userTypeId == 3" type="button" (click)="flipHiddenModuleName(course)" title="Add a module to {{course.courseName}}" class="plusbtn">+</button>&nbsp;
 </span>
 
 <br />
-<div [hidden]="isHidden_moduleNameInput">
+<div [hidden]="isHidden_moduleNameInput || user.userTypeId == 3">
   <br />
   <input type="text" [(ngModel)]="newModuleName" placeholder="Enter Module's Name" />
   <button type="button" (click)="addModule(selectedCourse?.courseId)">Add Module to {{selectedCourse?.courseName}}</button>
@@ -17,6 +17,6 @@
 
 <div *ngFor="let module of modules" [hidden]="hiddenCourseDetail[i]">
   <span>
-    <a [routerLink]="['/module', module.moduleId]">{{ module.moduleName }}</a><br />
+    <a [routerLink]="['/module', module.moduleId, user.userTypeId]">{{ module.moduleName }}</a><br />
   </span>
 </div> <!--this needs to be updated when we have more data-->

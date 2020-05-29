@@ -27,3 +27,8 @@ export interface Resource {
 export interface NewCourse {
   courseName: string;
 }
+
+export interface StudentCourse {
+  studentId: number;
+  courseId: number;
+}

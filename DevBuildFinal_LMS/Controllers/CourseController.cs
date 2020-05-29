@@ -130,6 +130,14 @@ namespace DevBuildFinal_LMS.Controllers
             return UpdateError(result);
         }
 
+        [HttpPost("enroll")]
+        public Object Enroll(StudentCourse studentCourse)
+        {
+            var result = courseData.Enroll(studentCourse);
+
+            return UpdateError(result);
+        }
+
         public object UpdateError(int result)
         {
             if (result == 1)

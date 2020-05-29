@@ -15,6 +15,7 @@ import { AdminComponent } from './admin/admin.component'
 import { CourseDetailComponent } from './course-detail/course-detail.component'
 import { ModuleComponent } from './module/module.component'
 import { MyCoursesComponent } from './my-courses/my-courses.component'
+import { PasswordComponent } from './password/password.component'
 import { CourseDataService } from './course-data.service';
 
 
@@ -30,6 +31,7 @@ import { CourseDataService } from './course-data.service';
     CourseDetailComponent,
     CoursesComponent,
     ModuleComponent,
+    PasswordComponent,
     MyCoursesComponent,
   ],
   imports: [
@@ -38,7 +40,8 @@ import { CourseDataService } from './course-data.service';
     FormsModule,
     RouterModule.forRoot([
       { path: 'course/:courseId', component: CourseDetailComponent },
-      { path: 'module/:moduleId', component: ModuleComponent },
+      { path: 'module/:moduleId/:userTypeId', component: ModuleComponent },
+      { path: 'password', component: PasswordComponent },
       { path: '', component: HomeComponent },
     ])
   ],

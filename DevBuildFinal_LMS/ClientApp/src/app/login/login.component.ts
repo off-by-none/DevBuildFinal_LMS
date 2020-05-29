@@ -8,7 +8,8 @@ import { UserDataService } from '../user-data'
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-/** Login component*/
+
+
 export class LoginComponent {
 
   @Output() clicked = new EventEmitter<User>();
@@ -18,7 +19,7 @@ export class LoginComponent {
   loginUserPassword: string;
   is_invalidUser: boolean = false;
 
-    /** Login ctor */
+  /** Login ctor */
   constructor(private userData: UserDataService, private router: Router) {}
 
   ngOnInit() {
