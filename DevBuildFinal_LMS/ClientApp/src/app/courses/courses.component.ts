@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CourseDataService } from '../course-data.service';
-import { Course, StudentCourse } from '../interfaces/course';
+import { Course, Module, StudentCourse } from '../interfaces/course';
 import { User } from '../interfaces/User';
 
 @Component({
@@ -15,12 +15,16 @@ export class CoursesComponent {
 
   allCourses: Course[];
   hiddenCourseDetail: boolean[] = [];
+  modules: Module[];
+  enrollMessage: string;
+  //teacher: User;
 
   /** courses ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
     this.getAllCourses();
+    this.enrollMessage = "";
   }
 
   getAllCourses() {
@@ -30,6 +34,15 @@ export class CoursesComponent {
           this.hiddenCourseDetail.push(true);
         }
         this.allCourses = data;
+      },
+      error => console.error(error)
+    );
+  }
+
+  getModules(courseId: number) {
+    this.courseData.getModules(courseId).subscribe(
+      (data: Module[]) => {
+        this.modules = data;
       },
       error => console.error(error)
     );
@@ -45,14 +58,17 @@ export class CoursesComponent {
     );
   }
 
-  flipHiddenCourseDetail(i: number) {
+  flipHiddenCourseDetail(i: number, courseId: number) {
     for (let i = 0; i < this.hiddenCourseDetail.length; i++) {
       this.hiddenCourseDetail[i] = true;
     }
     this.hiddenCourseDetail[i] = !this.hiddenCourseDetail[i];
+    this.enrollMessage = "";
+    this.getModules(courseId);
+    //this.getTeacher(courseId);
   }
 
-  enroll(courseId: number) {
+  enroll(i: number, courseId: number, courseName: string) {
     let newStudentCourse: StudentCourse = {
       studentId: this.user.userId,
       courseId: courseId
@@ -62,6 +78,17 @@ export class CoursesComponent {
       (data: any) => {
         console.log(data);
         this.getAllCourses();
+        this.enrollMessage = "You enrolled in " + courseName + "!";
+        this.hiddenCourseDetail[i] = !this.hiddenCourseDetail[i];
+      },
+      error => console.error(error)
+    );
+  }
+
+  getTeacher(courseId: number) {
+    this.courseData.getMyTeacher(courseId).subscribe(
+      (data: any) => {
+        //this.teacher = data;
       },
       error => console.error(error)
     );

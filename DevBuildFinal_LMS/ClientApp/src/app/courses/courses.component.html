@@ -1,11 +1,19 @@
 
 <br />
 <h2>All Courses</h2>
+<h6>{{enrollMessage}}</h6>
 <div *ngFor="let course of allCourses; index as i">
-  <button type="button" (click)="flipHiddenCourseDetail(i)" class="courseName">{{course.courseName}}</button>
+  <br />
+  <button type="button" (click)="flipHiddenCourseDetail(i, course.courseId)" class="courseName">{{course.courseName}}</button>
+
+  <div *ngFor="let module of modules, index as m" [hidden]="hiddenCourseDetail[i]">
+    <span>Module {{m + 1}}: {{ module.moduleName }}</span>
+  </div>
+
   <button type="button" [hidden]="user.userTypeId != 1" (click)="deleteCourse(course.courseId)" class="deletebtn" title="Remove {{course.courseName}}">x</button>
 
   <p [hidden]="hiddenCourseDetail[i]">
-    <button *ngIf="user.userTypeId == 3" type="button" (click)="enroll(course.courseId)">Enroll</button>
-    </p> <!--this needs to be updated when we have more data-->
+    <br />
+    <button *ngIf="user.userTypeId == 3" type="button" (click)="enroll(i, course.courseId, course.courseName)">Enroll</button>
+  </p> <!--this needs to be updated when we have more data-->
 </div>

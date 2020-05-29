@@ -21,6 +21,10 @@ export class CourseDataService {
     return this.http.get<Course[]>(`/api/course/teacher/${userId}`);
   }
 
+  getMyTeacher(courseId: number) {
+    return this.http.get<User[]>(`/api/course/user/teacher/${courseId}`);
+  }
+
   addCourse(newCourse: NewCourse) {
     return this.http.post<NewCourse>('/api/course/add/course', newCourse);
   }
@@ -48,7 +52,6 @@ export class CourseDataService {
   getStudentsByCourseId(courseId: number) {
     return this.http.get<User[]>(`/api/course/users/${courseId}`);
   }
-
 
   addTeacherToCourse(course: Course) {
     return this.http.post(`/api/course/add/teacher`, course);
