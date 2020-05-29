@@ -3,8 +3,8 @@
 <h2>My Courses</h2>
 
 <span *ngFor="let course of myCourses; index as i">
-  <button type="button" (click)="flipHiddenCourseDetail(i, course.courseId)">{{course.courseName}}</button>
-  <button type="button" (click)="flipHiddenModuleName(course)" title="Add a module to {{course.courseName}}">+</button>&nbsp;
+  <button type="button" (click)="flipHiddenCourseDetail(i, course.courseId)" class="coursebtn">{{course.courseName}}</button>
+  <button type="button" (click)="flipHiddenModuleName(course)" title="Add a module to {{course.courseName}}" class="plusbtn">+</button>&nbsp;
 </span>
 
 <br />

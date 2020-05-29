@@ -1,10 +1,11 @@
 <button type="button" (click)="flipHiddenNewCourse()">Create New Course</button>
 <button type="button" (click)="flipHiddenNewUser()">Create New User</button>
 <button type="button" (click)="flipHiddenCourses()">Display Courses</button>
-<button type="button" (click)="flipHiddenTeacherCourse()">Assign Teacher to Course</button>
-<button type="button" (click)="flipHiddenAdminGrant()">Grant Admin access to A User</button>
+<button type="button" (click)="flipHiddenTeacherCourse()">Assign Teacher</button>
+<button type="button" (click)="flipHiddenAdminGrant()">Grant Admin Access</button>
 
 <h3 style="color:red">{{message}}</h3>
+
 
 <table [hidden]="hiddenNewCourse">
   <tr>
