@@ -44,6 +44,19 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
+        public IEnumerable<User> GetRegularUsers()
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "SELECT * FROM LMS.dbo.UserTable where userTypeId != 1";
+
+            IEnumerable<User> result = conn.Query<User>(command);
+
+            conn.Close();
+
+            return result;
+        }
+
         public IEnumerable<string> GetUsersNames()
         {
             SqlConnection conn = new SqlConnection(connString);
@@ -88,9 +101,9 @@ namespace DevBuildFinal_LMS.Services
         {
             SqlConnection conn = new SqlConnection(connString);
 
-            string command = "update LMS.dbo.UserTable set userTypeId = @userTypeId where userId = @userId";
+            string command = "update LMS.dbo.UserTable set userTypeId = 1 where userId = @userId";
 
-            int result = conn.Execute(command, new { userTypeId = user.userTypeId, userId = user.userId });
+            int result = conn.Execute(command, new { userId = user.userId });
 
             conn.Close();
 

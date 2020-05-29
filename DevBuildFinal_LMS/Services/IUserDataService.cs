@@ -14,5 +14,6 @@ namespace DevBuildFinal_LMS.Services
         public int AddUser(User user);
         public int ChangeAdminStatus(User user);
         public IEnumerable<User> GetTeachers();
+        public IEnumerable<User> GetRegularUsers();
     }
 }

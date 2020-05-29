@@ -15,6 +15,10 @@ export class UserDataService {
     return this.http.get<User[]>(`/api/user/teachers`);
   }
 
+  getRegularUsers() {
+    return this.http.get<User[]>(`/api/user/regular`);
+  }
+
   getAllUsersNames() {
     return this.http.get<string[]>(`/api/user/names`);
   }
@@ -25,6 +29,10 @@ export class UserDataService {
 
   addUser(newUser: NewUser) {
     return this.http.post<NewUser>(`/api/user/add`, newUser);
+  }
+
+  changeAdminStatus(newAdmin: User) {
+    return this.http.put(`/api/user/admin/change`, newAdmin);
   }
 
 }

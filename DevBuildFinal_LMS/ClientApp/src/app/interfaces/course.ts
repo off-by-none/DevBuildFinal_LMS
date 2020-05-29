@@ -1,8 +1,7 @@
 export interface Course {
   courseId: number;
   courseName: string;
-  assignments: Assignments[];
-
+  assignedTeacherId: number;
 }
 
 export interface Module {

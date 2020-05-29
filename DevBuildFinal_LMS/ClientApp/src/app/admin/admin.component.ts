@@ -9,6 +9,8 @@ import { User, NewUser } from '../interfaces/user';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
+
+
 /** admin component*/
 export class AdminComponent {
 
@@ -19,34 +21,52 @@ export class AdminComponent {
   userTypeId: number;
   message: string;
 
+  selectedTeacherId: number;
+  selectedCourseId: number;
+
+  newAdminId: number;
+
+  regularUsers: User[];
   teachers: User[];
   allCourses: Course[];
 
   hiddenCourses: boolean = true;
   hiddenNewCourse: boolean = true;
   hiddenNewUser: boolean = true;
+  hiddenTeacherCourse: boolean = true;
+  hiddenAdminGrant: boolean = true;
 
   /** admin ctor */
   constructor(private courseData: CourseDataService, private userData: UserDataService) { }
 
   ngOnInit() {
-    //this.getAllCourses();
     this.getTeachers();
+    this.getAllCourses();
+    this.getRegularUsers();
   }
-
-  //getAllCourses() {
-  //  this.courseData.getAllCourses().subscribe(
-  //    (data: Course[]) => {
-  //      this.allCourses = data;
-  //    },
-  //    error => console.error(error)
-  //  );
-  //}
 
   getTeachers() {
     this.userData.getTeachers().subscribe(
       (data: User[]) => {
         this.teachers = data;
+      },
+      error => console.error(error)
+    );
+  }
+
+  getAllCourses() {
+    this.courseData.getAllCourses().subscribe(
+      (data: Course[]) => {
+        this.allCourses = data;
+      },
+      error => console.error(error)
+    );
+  }
+
+  getRegularUsers() {
+    this.userData.getRegularUsers().subscribe(
+      (data: User[]) => {
+        this.regularUsers = data;
       },
       error => console.error(error)
     );
@@ -83,6 +103,43 @@ export class AdminComponent {
     }
   }
 
+  addTeacherToCourse() {
+    let newTeacherCourse: Course = {
+      assignedTeacherId: +this.selectedTeacherId, //IMPORTANT we must cast this as an INT or the Json will not convert correctly
+      courseName: '',
+      courseId: +this.selectedCourseId //IMPORTANT we must cast this as an INT or the Json will not convert correctly
+    }
+
+    this.courseData.addTeacherToCourse(newTeacherCourse).subscribe(
+      (data: any) => {
+        console.log(data);
+      },
+      error => console.error(error)
+    );
+
+    this.resetHidden();
+  }
+
+  giveUserAdminRights() {
+
+    console.log(this.newAdminId);
+
+    let newAdmin: User = {
+      userId: +this.newAdminId,
+      userName: ' ',
+      userTypeId: 1
+    }
+
+    this.userData.changeAdminStatus(newAdmin).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.getRegularUsers();
+        this.resetHidden();
+      },
+      error => console.error(error)
+    );
+  }
+
   flipHiddenCourses() {
     this.hiddenCourses = !this.hiddenCourses;
   }
@@ -95,10 +152,20 @@ export class AdminComponent {
     this.hiddenNewUser = !this.hiddenNewUser;
   }
 
+  flipHiddenTeacherCourse() {
+    this.hiddenTeacherCourse = !this.hiddenTeacherCourse;
+  }
+
+  flipHiddenAdminGrant() {
+    this.hiddenAdminGrant = !this.hiddenAdminGrant;
+  }
+
   resetHidden() {
     this.hiddenCourses = true;
     this.hiddenNewCourse = true;
     this.hiddenNewUser = true;
+    this.hiddenTeacherCourse = true;
+    this.hiddenAdminGrant = true;
   }
 
 }
