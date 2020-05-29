@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CourseDataService } from '../course-data.service';
-import { Course, Module } from '../interfaces/course';
+import { Course, Module, StudentCourse } from '../interfaces/course';
 import { User } from '../interfaces/user';
 
 @Component({
@@ -93,6 +93,21 @@ export class MyCoursesComponent {
     }
     this.hiddenCourseDetail[i] = !this.hiddenCourseDetail[i];
     this.getModules(courseId);
+  }
+
+  unenroll(courseId: number) {
+    let newStudentCourse: StudentCourse = {
+      studentId: this.user.userId,
+      courseId: courseId
+    }
+    console.log(newStudentCourse);
+    this.courseData.unenroll(newStudentCourse).subscribe(
+      (data: any) => {
+        console.log(data);
+        this.getMyCourses();
+      },
+      error => console.error(error)
+    );
   }
 
 }

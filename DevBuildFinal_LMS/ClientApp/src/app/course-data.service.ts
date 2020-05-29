@@ -70,4 +70,8 @@ export class CourseDataService {
     return this.http.post<StudentCourse>('/api/course/enroll', newStudentCourse);
   }
 
+  unenroll(newStudentCourse: StudentCourse) {
+    return this.http.delete<StudentCourse>('/api/course/unenroll/' + newStudentCourse.studentId + '/' + newStudentCourse.courseId);
+  }
+
 }

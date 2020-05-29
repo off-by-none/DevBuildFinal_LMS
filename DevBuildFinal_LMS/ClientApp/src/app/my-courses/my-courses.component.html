@@ -5,7 +5,7 @@
 <span *ngFor="let course of myCourses; index as i">
   <button type="button" (click)="flipHiddenCourseDetail(i, course.courseId)" class="coursebtn">{{course.courseName}}</button>
   <button [hidden]="user.userTypeId == 3" type="button" (click)="flipHiddenModuleName(course)" title="Add a module to {{course.courseName}}" class="plusbtn">+</button>&nbsp;
-  <button *ngIf="user.userTypeId == 3" type="button" title="Unenroll from {{course.courseName}}" class="plusbtn">-</button>&nbsp;
+  <!--<button *ngIf="user.userTypeId == 3" type="button" (click)="unenroll(course.courseId)" title="Unenroll from {{course.courseName}}" class="plusbtn">-</button>&nbsp;-->
 </span>
 
 <br />

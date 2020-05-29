@@ -243,5 +243,18 @@ namespace DevBuildFinal_LMS.Services
 
             return result;
         }
+
+        public int Unenroll(int studentId, int courseId)
+        {
+            SqlConnection conn = new SqlConnection(connString);
+
+            string command = "DELETE FROM StudentCourse WHERE studentId = @studentId AND courseId = @courseId ";
+
+            int result = conn.Execute(command);
+
+            conn.Close();
+
+            return result;
+        }
     }
 }
