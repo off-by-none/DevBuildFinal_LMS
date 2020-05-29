@@ -141,22 +141,27 @@ export class AdminComponent {
   }
 
   flipHiddenCourses() {
+    this.resetHidden();
     this.hiddenCourses = !this.hiddenCourses;
   }
 
   flipHiddenNewCourse() {
+    this.resetHidden();
     this.hiddenNewCourse = !this.hiddenNewCourse;
   }
 
   flipHiddenNewUser() {
+    this.resetHidden();
     this.hiddenNewUser = !this.hiddenNewUser;
   }
 
   flipHiddenTeacherCourse() {
+    this.resetHidden();
     this.hiddenTeacherCourse = !this.hiddenTeacherCourse;
   }
 
   flipHiddenAdminGrant() {
+    this.resetHidden();
     this.hiddenAdminGrant = !this.hiddenAdminGrant;
   }
 

@@ -62,7 +62,6 @@
   <select [(ngModel)]="newAdminId">
     <option *ngFor="let u of regularUsers" value={{u.userId}}>{{u.userName}}</option>
   </select>
-  <p>Your pick for new admin: {{newAdminId}}</p>
   <br />
   <button (click)="giveUserAdminRights()" id="give-admin">Give User Admin</button>
 

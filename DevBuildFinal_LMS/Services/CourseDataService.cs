@@ -244,17 +244,17 @@ namespace DevBuildFinal_LMS.Services
             return result;
         }
 
-        public int Unenroll(int studentId, int courseId)
-        {
-            SqlConnection conn = new SqlConnection(connString);
+        //public int Unenroll(int studentId, int courseId)
+        //{
+        //    SqlConnection conn = new SqlConnection(connString);
 
-            string command = "DELETE FROM StudentCourse WHERE studentId = @studentId AND courseId = @courseId ";
+        //    string command = "DELETE FROM StudentCourse WHERE studentId = @studentId AND courseId = @courseId ";
 
-            int result = conn.Execute(command);
+        //    int result = conn.Execute(command);
 
-            conn.Close();
+        //    conn.Close();
 
-            return result;
-        }
+        //    return result;
+        //}
     }
 }

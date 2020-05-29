@@ -138,13 +138,13 @@ namespace DevBuildFinal_LMS.Controllers
             return UpdateError(result);
         }
 
-        [HttpDelete("unenroll/{studentId}/{courseId}")]
-        public Object Unenroll(int studentId, int courseId)
-        {
-            var result = courseData.Unenroll(studentId, courseId);
+        //[HttpDelete("unenroll/{studentId}/{courseId}")]
+        //public Object Unenroll(int studentId, int courseId)
+        //{
+        //    var result = courseData.Unenroll(studentId, courseId);
 
-            return UpdateError(result);
-        }
+        //    return UpdateError(result);
+        //}
 
         public object UpdateError(int result)
         {

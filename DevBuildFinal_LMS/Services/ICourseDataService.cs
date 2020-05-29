@@ -25,6 +25,6 @@ namespace DevBuildFinal_LMS.Services
         public int AddAssignment(Assignment assignment);
         public int AddResource(Resource resource);
         public int Enroll(StudentCourse studentCourse);
-        public int Unenroll(StudentCourse studentCourse);
+        //public int Unenroll(StudentCourse studentCourse);
     }
 }
