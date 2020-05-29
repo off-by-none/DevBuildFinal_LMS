@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CourseDataService } from '../course-data.service';
-import { Course } from '../interfaces/course';
+import { Course, Module } from '../interfaces/course';
 import { User } from '../interfaces/user';
 
 @Component({
@@ -13,13 +13,16 @@ export class MyCoursesComponent {
   @Input() user: User;
 
   myCourses: Course[];
+  modules: Module[];
   hiddenCourseDetail: boolean[] = [];
+  isHidden_moduleNameInput: boolean = true;
+  newModuleName: string = "";
+  selectedCourse: Course;
 
   /** my-courses ctor */
   constructor(private courseData: CourseDataService) { }
 
   ngOnInit() {
-    console.log(this.user.userId);
     if (this.user.userTypeId == 3) {
       this.getMyCourses();
     } else if (this.user.userTypeId == 2) {
@@ -35,7 +38,6 @@ export class MyCoursesComponent {
   //}
 
   getMyCourses() {
-    console.log(this.user.userId)
     this.courseData.getMyCourses(this.user.userId).subscribe(
       (data: Course[]) => {
         for (let i = 0; i < data.length; i++) {
@@ -48,7 +50,6 @@ export class MyCoursesComponent {
   }
 
   getMyTeacherCourses() {
-    console.log(this.user.userId)
     this.courseData.getMyTeacherCourses(this.user.userId).subscribe(
       (data: Course[]) => {
         for (let i = 0; i < data.length; i++) {
@@ -60,11 +61,36 @@ export class MyCoursesComponent {
     );
   }
 
-  flipHiddenCourseDetail(i: number) {
+  getModules(courseId: number) {
+    this.courseData.getModules(courseId).subscribe(
+      (data: Module[]) => {
+        this.modules = data;
+      },
+      error => console.error(error)
+    );
+  }
+
+  addModule(selectedCourseId: number) {
+    this.flipHiddenModuleName(null);
+    let newModule: Module = {
+      moduleId: 0,
+      moduleName: this.newModuleName,
+      courseId: selectedCourseId
+    }
+    this.courseData.addModule(newModule).subscribe();
+  }
+
+  flipHiddenModuleName(course: Course) {
+    this.selectedCourse = course;
+    this.isHidden_moduleNameInput = !this.isHidden_moduleNameInput;
+  }
+
+  flipHiddenCourseDetail(i: number, courseId: number) {
     for (let i = 0; i < this.hiddenCourseDetail.length; i++) {
       this.hiddenCourseDetail[i] = true;
     }
     this.hiddenCourseDetail[i] = !this.hiddenCourseDetail[i];
+    this.getModules(courseId);
   }
 
 }

@@ -22,7 +22,7 @@ export class CourseDataService {
   }
 
   addCourse(newCourse: NewCourse) {
-    return this.http.post<NewCourse>('/api/course/add/course',newCourse);
+    return this.http.post<NewCourse>('/api/course/add/course', newCourse);
   }
 
   deleteCourse(id: number) {
@@ -47,6 +47,10 @@ export class CourseDataService {
 
   getStudentsByCourseId(courseId: number) {
     return this.http.get<User[]>(`/api/course/users/${courseId}`);
+  }
+
+  addModule(newModule: Module) {
+    return this.http.post<Module>(`/api/course/add/module`, newModule);
   }
 
 }

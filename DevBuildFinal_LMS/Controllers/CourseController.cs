@@ -60,18 +60,18 @@ namespace DevBuildFinal_LMS.Controllers
             return UpdateError(result);
         }
 
-        [HttpPost("add/teacher")]
-        public Object AddTeacherToCourse(Course course)
-        {
-            var result = courseData.AddTeacherToCourse(course);
-
-            return UpdateError(result);
-        }
-
         [HttpPost("add/module")]
         public Object AddModule(Module module)
         {
             var result = courseData.AddModule(module);
+
+            return UpdateError(result);
+        }
+
+        [HttpPost("add/teacher")]
+        public Object AddTeacherToCourse(Course course)
+        {
+            var result = courseData.AddTeacherToCourse(course);
 
             return UpdateError(result);
         }
